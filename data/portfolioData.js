@@ -7,7 +7,7 @@ export const portfolioData = {
     phone: "+1 (438) 985-8889",
     hero: {
       greeting: "Bonjour, je suis",
-      description: "Bienvenue sur mon portfolio professionnel où je présente mes projets et compétences",
+      description: "Allier créativité et expertise",
       button: "Voir mes projets"
     },
     sections: {
@@ -17,11 +17,11 @@ export const portfolioData = {
       contact: "Contactez-moi"
     },
     nav: {
-      home: "accueil",
-      expertise: "expertise",
-      work: "travail",
-      experience: "expérience",
-      contact: "contact"
+      home: "Accueil",
+      expertise: "Expérience",
+      work: "Projets",
+      experience: "Expertise",
+      contact: "Connexion"
     },
     social: {
       github: "https://github.com/NexPathArchitect",
@@ -60,7 +60,7 @@ export const portfolioData = {
         id: 4,
         title: "Logiciel OCR",
         description: "Participation au développement d'un logiciel de reconnaissance de texte. (Projet sous licence, le code source n'est pas public)",
-        image: "/images/Projet4.png",
+        image: "/images/tree2.jpg",
         tags: ["Python", "Machine Learning", "OCR"],
         sourceCode: "",
         liveDemo: "",
@@ -77,7 +77,6 @@ export const portfolioData = {
         { name: "Design Responsive", level: 90 },
       ],
       data: [
-        { name: "Python", level: 80 },
         { name: "SQL", level: 75 },
         { name: "Data Analysis", level: 70 },
         { name: "Machine Learning", level: 60 },
@@ -86,8 +85,7 @@ export const portfolioData = {
         { name: "Python", level: 85 },
         { name: "C#", level: 90 },
         { name: "Git", level: 90 },
-        { name: "Algorithms", level: 80 },
-      ]
+      ],
     }
   },
   en: {
@@ -98,7 +96,7 @@ export const portfolioData = {
     phone: "+1 (438) 985-8889",
     hero: {
       greeting: "Hello, I'm",
-      description: "Welcome to my professional portfolio where I present my projects and skills",
+      description: "Where creativity meets expertise",
       button: "View my projects"
     },
     sections: {
@@ -108,11 +106,11 @@ export const portfolioData = {
       contact: "Contact me"
     },
     nav: {
-      home: "home",
-      expertise: "expertise",
-      work: "work",
-      experience: "experience",
-      contact: "contact"
+      home: "Home",
+      expertise: "Background",
+      work: "Projects",
+      experience: "Skills",
+      contact: "Contact"
     },
     social: {
       github: "https://github.com/NexPathArchitect",
@@ -151,7 +149,7 @@ export const portfolioData = {
         id: 4,
         title: "OCR Software",
         description: "Participation in the development of text recognition software. (Licensed project, source code is not public)",
-        image: "/images/Projet4.png",
+        image: "/images/tree2.jpg",
         tags: ["Python", "Machine Learning", "OCR"],
         sourceCode: "",
         liveDemo: "",
