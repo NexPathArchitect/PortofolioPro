@@ -15,7 +15,7 @@ export default function Home() {
   const data = portfolioData[language];
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-800 to-black text-white">
+    <div className="min-h-screen text-white bg-black/30">
       <Head>
         <title>{data.name} - Portfolio</title>
         <meta
