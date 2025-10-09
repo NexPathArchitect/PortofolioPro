@@ -9,22 +9,31 @@ export default function Header() {
   const { language, toggleLanguage } = useLanguage();
   const data = portfolioData[language];
 
-  const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [active, setActive] = useState("#home");
+  const sections = ["home", "about", "projects", "skills", "contact"];
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-      setLastScrollY(window.scrollY);
+      let current = "#home";
+      sections.forEach((id) => {
+        const elem = document.getElementById(id);
+        if (elem) {
+          const rect = elem.getBoundingClientRect();
+          const elemTop = rect.top;
+          const elemBottom = rect.bottom;
+          const threshold = window.innerHeight / 2; // 视口中点
+          if (elemTop <= threshold && elemBottom >= threshold) {
+            current = `#${id}`;
+          }
+        }
+      });
+      setActive(current);
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // 初始化
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const handleScrollTo = (e, href) => {
     e.preventDefault();
@@ -32,16 +41,13 @@ export default function Header() {
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      setActive(href); // 点击立即高亮
     }
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm bg-black/30 
-                 transform transition-transform duration-500 
-                 ${visible ? "translate-y-0" : "-translate-y-full"}`}
-    >
-      <nav className="flex justify-between items-center p-6">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-sm transition-colors duration-500">
+      <nav className="flex justify-between items-center p-6 max-w-7xl mx-auto">
         <button
           onClick={toggleLanguage}
           className="text-gray-100 hover:text-white text-lg transition-colors duration-300 border border-gray-400 rounded-full px-4 py-1"
@@ -61,9 +67,15 @@ export default function Header() {
               <Link
                 href={item.href}
                 onClick={(e) => handleScrollTo(e, item.href)}
-                className="relative text-gray-200 hover:text-white text-lg md:text-xl transition-colors duration-300 
-                           after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] 
-                           after:bg-white after:transition-all hover:after:w-full"
+                className={`
+                  relative text-gray-200 text-lg md:text-xl transition-colors duration-300
+                  hover:text-white
+                  ${active === item.href ? "text-indigo-400" : ""}
+                  after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px]
+                  after:bg-indigo-400 after:transition-all after:duration-300
+                  ${active === item.href ? "after:w-full" : ""}
+                  hover:after:w-full
+                `}
               >
                 {item.label}
               </Link>
